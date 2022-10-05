@@ -28,18 +28,18 @@ public class Produtos {
 	private String nome;
 
 	@NotBlank
-	@Size(min = 0)
-	private String valor;
+	@Size(min = 0)		//precisamos definir o max ?
+	private String valor;	//para valores que serão alterados colocamos FLOAT ou STRING ?
 
 	@NotBlank
-	@Size(min = 0)
-	private String kg;
+	@Size(min = 0)	//precisamos definir o max ?
+	private String kg;	//para valores que serão alterados colocamos FLOAT ou STRING ?
 
 	@NotBlank
-	@Size(min = 0)
-	private String estoque;
+	@Size(min = 0)	//precisamos definir o max ?
+	private String estoque;	//para valores que serão alterados colocamos FLOAT ou STRING ?
 
-	private String imagem;
+	private String imagem;	//qual @ é utilizado para imagens ?
 
 	@OneToMany(mappedBy = "produtos", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("produtos")
