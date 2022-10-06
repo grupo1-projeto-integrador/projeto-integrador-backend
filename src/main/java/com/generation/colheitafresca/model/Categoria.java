@@ -1,10 +1,13 @@
 package com.generation.colheitafresca.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -24,9 +27,9 @@ public class Categoria {
 	@Size(max = 100, message = "O titulo deve conter no máximo 100 caracteres")
 	private String titulo;
 
-	@ManyToOne
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("categoria")
-	private Produtos produtos;
+	private List<Produtos> produtos;
 
 	public Long getId() {
 		return id;
@@ -44,11 +47,11 @@ public class Categoria {
 		this.titulo = titulo;
 	}
 
-	public Produtos getProdutos() {
+	public List<Produtos> getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(Produtos produtos) {
+	public void setProdutos(List<Produtos> produtos) {
 		this.produtos = produtos;
 	}
 

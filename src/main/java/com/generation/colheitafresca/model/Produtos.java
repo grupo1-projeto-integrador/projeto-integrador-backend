@@ -1,13 +1,10 @@
 package com.generation.colheitafresca.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -28,22 +25,22 @@ public class Produtos {
 	private String nome;
 
 	@NotBlank
-	@Size(min = 0)		//precisamos definir o max ?
-	private String valor;	//para valores que serão alterados colocamos FLOAT ou STRING ?
+	@Size(min = 0) // precisamos definir o max ?
+	private String valor; // para valores que serão alterados colocamos FLOAT ou STRING ?
 
 	@NotBlank
-	@Size(min = 0)	//precisamos definir o max ?
-	private String kg;	//para valores que serão alterados colocamos FLOAT ou STRING ?
+	@Size(min = 0) // precisamos definir o max ?
+	private String kg; // para valores que serão alterados colocamos FLOAT ou STRING ?
 
 	@NotBlank
-	@Size(min = 0)	//precisamos definir o max ?
-	private String estoque;	//para valores que serão alterados colocamos FLOAT ou STRING ?
+	@Size(min = 0) // precisamos definir o max ?
+	private String estoque; // para valores que serão alterados colocamos FLOAT ou STRING ?
 
-	private String imagem;	//qual @ é utilizado para imagens ?
+	private String imagem; // qual @ é utilizado para imagens ?
 
-	@OneToMany(mappedBy = "produtos", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("produtos")
-	private List<Categoria> categoria;
+	@ManyToOne
+	@JsonIgnoreProperties("Produtos")
+	private Categoria categoria;
 
 	public Long getId() {
 		return id;
@@ -93,11 +90,11 @@ public class Produtos {
 		this.imagem = imagem;
 	}
 
-	public List<Categoria> getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(List<Categoria> categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
