@@ -1,5 +1,7 @@
 package com.generation.colheitafresca.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,8 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -24,16 +29,17 @@ public class Produtos {
 	@Size(max = 100)
 	private String nome;
 
-	@NotBlank
-	@Size(min = 0) // precisamos definir o max ?
-	private String valor; // para valores que serão alterados colocamos FLOAT ou STRING ?
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
+    @NotNull
+    @Positive
+    private BigDecimal valor;
 
 	@NotBlank
-	@Size(min = 0) // precisamos definir o max ?
+	@Size(min = 0)
 	private String kg; // para valores que serão alterados colocamos FLOAT ou STRING ?
 
 	@NotBlank
-	@Size(min = 0) // precisamos definir o max ?
+	@Size(min = 0) 
 	private String estoque; // para valores que serão alterados colocamos FLOAT ou STRING ?
 
 	private String imagem; // qual @ é utilizado para imagens ?
@@ -58,11 +64,11 @@ public class Produtos {
 		this.nome = nome;
 	}
 
-	public String getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(String valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 
