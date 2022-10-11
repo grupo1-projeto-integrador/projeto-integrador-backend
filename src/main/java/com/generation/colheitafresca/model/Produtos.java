@@ -1,7 +1,6 @@
 package com.generation.colheitafresca.model;
 
 import java.math.BigDecimal;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,6 +46,18 @@ public class Produtos {
 	@ManyToOne
 	@JsonIgnoreProperties("Produtos")
 	private Categoria categoria;
+
+	@ManyToOne
+	@JsonIgnoreProperties("Produtos")
+	private Usuario usuario;
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public Long getId() {
 		return id;
