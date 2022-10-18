@@ -20,10 +20,10 @@ public class UsuarioLogin {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getEmail() {
+	public String getUsuario() {
 		return email;
 	}
-	public void setEmail(String email) {
+	public void setUsuario(String email) {
 		this.email = email;
 	}
 	public String getFoto() {

@@ -42,12 +42,12 @@ public class UsuarioService {
 
 	public Optional<UsuarioLogin> logarUsuario(Optional<UsuarioLogin> usuarioLogin) {
 
-		Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getEmail());
+		Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getUsuario());
 		if (usuario.isPresent()) {
 			if (compararSenhas(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
 				usuarioLogin.get().setId(usuario.get().getId());
 				usuarioLogin.get().setNome(usuario.get().getNome());
-				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getEmail(), usuarioLogin.get().getSenha()));
+				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
 				return usuarioLogin;
 			}
