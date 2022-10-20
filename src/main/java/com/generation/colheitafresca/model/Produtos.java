@@ -44,11 +44,11 @@ public class Produtos {
 	private String imagem; // qual @ é utilizado para imagens ?
 
 	@ManyToOne
-	@JsonIgnoreProperties("Produtos")
+	@JsonIgnoreProperties("produtos")
 	private Categoria categoria;
 
 	@ManyToOne
-	@JsonIgnoreProperties("Produtos")
+	@JsonIgnoreProperties("produtos")
 	private Usuario usuario;
 	
 	public Usuario getUsuario() {

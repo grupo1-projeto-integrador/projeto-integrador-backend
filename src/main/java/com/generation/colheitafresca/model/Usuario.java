@@ -18,6 +18,8 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
@@ -29,6 +31,7 @@ public class Usuario {
 	@NotBlank(message = "O nome é obrigatório")
 	private String nome;
 
+	@Schema(example = "email@email.com.br")
 	@NotBlank(message = "O email é obrigatório")
 	@Email(message = "seuemail@123.com")
 	private String email;
