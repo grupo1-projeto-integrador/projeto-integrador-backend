@@ -34,7 +34,7 @@ public class Usuario {
 	private String email;
 
 	@NotBlank(message = "A senha é obrigatório")
-	@Size(min = 6, max = 16, message = "A senha deve conter entre 6 a 16 caracteres")
+	@Size(min = 6, message = "A senha deve conter entre 6 a 16 caracteres")
 	private String senha;
 
 	@CPF(message = "CPF inválido")
@@ -48,6 +48,7 @@ public class Usuario {
 
 	@NotBlank
 	private String tipo;
+	
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
